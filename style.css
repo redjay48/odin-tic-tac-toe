@@ -1,0 +1,32 @@
+header {
+    text-align: center;
+    font-size: 64px;
+}
+
+section#main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#leftDiv {
+    margin-top: 12rem;
+    display: grid;
+    place-items: center;
+}
+
+.gameButtons {
+    height: 80px;
+    width: 80px;
+    font-size: 40px;
+}
+
+#gameBoard {
+    display: grid;
+    gap: 5px;
+}
+
+.divRow1, .divRow2, .divRow3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
