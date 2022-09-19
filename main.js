@@ -1,6 +1,10 @@
-// const player = (name,symbol) => {
-//     return {name, symbol};
-// }
+const player = (name, symbol) => {
+    return { name, symbol };
+}
+
+const Player1 = player('Raju', "X");
+const Player2 = player("Raj", "O");
+
 
 // const gameBoard = (() => {
 //     const gameCells = [];
@@ -62,11 +66,69 @@ const cellRow3 = document.getElementsByClassName('cellRow3');
 
 //     let count = 0;
 //     for (let i = 0; i < 3; i++) {
-//         if (diagonal1[i].textContent === "X") || (diagonal2[i].textContent === "X") || (cellColumn1[i].textContent === "X") || (cellColumn2[i].textContent === "X") || (cellColumn3[i].textContent === "X") || (diagonal1[i].textContent === "X"){
+//         if (diagonal1[i].textContent === "X")
+//         {
 //             count++;
 //             if (count === 3) {
 //                 console.log("X wins!!!");
 //                 disableAll();
+//                 count = 0;
+//             }
+
+//         } else if (diagonal2[i].textContent === "X") {
+//             count++;
+//             if (count === 3) {
+//                 console.log("X wins!!!");
+//                 disableAll();
+//                 count = 0;
+//             }
+
+//         } else if (cellColumn1[i].textContent === "X") {
+//             count++;
+//             if (count === 3) {
+//                 console.log("X wins!!!");
+//                 disableAll();
+//                 count = 0;
+//             }
+
+//         } else if (cellColumn2[i].textContent === "X") {
+//             count++;
+//             if (count === 3) {
+//                 console.log("X wins!!!");
+//                 disableAll();
+//                 count = 0;
+//             }
+
+//         } else if (cellColumn3[i].textContent === "X") {
+//             count++;
+//             if (count === 3) {
+//                 console.log("X wins!!!");
+//                 disableAll();
+//                 count = 0;
+//             }
+
+//         } else if (cellRow1[i].textContent === "X") {
+//             count++;
+//             if (count === 3) {
+//                 console.log("X wins!!!");
+//                 disableAll();
+//                 count = 0;
+//             }
+
+//         } else if (cellRow2[i].textContent === "X") {
+//             count++;
+//             if (count === 3) {
+//                 console.log("X wins!!!");
+//                 disableAll();
+//                 count = 0;
+//             }
+
+//         } else if (cellRow3[i].textContent === "X") {
+//             count++;
+//             if (count === 3) {
+//                 console.log("X wins!!!");
+//                 disableAll();
+//                 count = 0;
 //             }
 
 //         }
@@ -122,21 +184,76 @@ for (let i = 0; i < 3; i++) {
         document.querySelector(`button[data-key="${i}${j}"]`).addEventListener('click', function (e) {
             count++;
             if (count % 2 === 0) {
-                e.target.textContent = "X";
-                array[i][j] = "X";
+                e.target.textContent = Player1.symbol;
+                array[i][j] = Player1.symbol;
             } else {
-                e.target.textContent = "O";
-                array[i][j] = "O";
+                e.target.textContent = Player2.symbol;
+                array[i][j] = Player2.symbol;
             }
             e.target.disabled = "true";
         })
     }
 }
 
-
-function win() {
-    for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 3; j++) {
+function winCondition(a, b, counter) {
+    if (array[a][b] === Player1.symbol) {
+        counter++;
+        if (counter === 3) {
+            console.log(counter);
+            console.log(`${Player1.name} Wins!!!`);
+            counter = 0;
         }
     }
 }
+
+
+function win(current) {
+    let countRow = 0;
+    let countColumn = 0;
+    let countDiag1 = 0;
+    let countDiag2 = 0;
+    for (let k = 0; k < 3; k++) {
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (i === k) {
+                    if (array[i][j] === current.symbol) {
+                        countRow++;
+                        if (countRow === 3) {
+                            console.log(countRow);
+                            console.log(`${current.name} Wins!!!`);
+                            countRow = 0;
+                        }
+                    }
+                } else if (j === k) {
+                    if (array[i][j] === current.symbol) {
+                        countColumn++;
+                        if (countColumn === 3) {
+                            console.log(countColumn);
+                            console.log(`${current.name} Wins!!!`);
+                            countColumn = 0;
+                        }
+                    }
+                } else if (array[i][j] === array[j][i] === current.symbol) {
+                    countDiag1++;
+                    console.log(countDiag1);
+                    if (countDiag1 === 3) {
+                        console.log(countDiag1);
+                        console.log(`${current.name} Wins!!!`);
+                        countDiag1 = 0;
+                    }
+                } else if (array[2][0] === array[1][1] === array[0][2] === current.symbol) {
+                    countDiag2++;
+                    console.log(countDiag2);
+                    if (countDiag2 === 3) {
+                        console.log(countDiag2);
+                        console.log(`${current.name} Wins!!!`);
+                        countDiag1 = 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
