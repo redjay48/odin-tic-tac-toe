@@ -76,6 +76,11 @@ label {
     display: grid;
     place-items: center;
     justify-self: center;
-    border: 2px red solid;
     margin-top: 6rem;
+}
+
+#displayWinner {
+    font-size: 64px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(128, 93, 161);
 }

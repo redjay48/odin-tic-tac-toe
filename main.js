@@ -16,11 +16,13 @@ const gameBoard = (() => {
     const _cellRow1 = Array.from(document.getElementsByClassName('cellRow1'));
     const _cellRow2 = Array.from(document.getElementsByClassName('cellRow2'));
     const _cellRow3 = Array.from(document.getElementsByClassName('cellRow3'));
+    const display = document.getElementById('displayWinner');
     const setArray = [_diagonal1, _diagonal2, _cellColumn1, _cellColumn2, _cellColumn3, _cellRow1, _cellRow2, _cellRow3];
 
     return {
         cells,
-        setArray
+        setArray,
+        display
     }
 })();
 
@@ -61,10 +63,10 @@ const gameLogic = (() => {
        gameBoard.setArray.forEach(set => {
             if (set.every(_fillAll)) {
                 if (set.every(_fillOne)) {
-                    console.log(`${Player1.name} Wins!!!`);
+                    gameBoard.display.textContent = `${Player1.name} Wins!!!`;
                     endGame.disableAll();
                 } else if (set.every(_fillTwo)) {
-                    console.log(`${Player2.name} Wins!!!`);
+                    gameBoard.display.textContent = `${Player2.name} Wins!!!`;
                     endGame.disableAll();
                 }
             }
