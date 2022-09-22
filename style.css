@@ -4,14 +4,15 @@ header {
 }
 
 section#main {
+    margin-top: 12rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
 
 #leftDiv {
-    margin-top: 12rem;
     display: grid;
     place-items: center;
+    align-items: center;
 }
 
 .gameButtons {
@@ -29,4 +30,52 @@ section#main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 5px;
+}
+
+#rightDiv {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 100px;
+}
+
+.formLeft {
+    display: grid;
+    gap: 12px;
+}
+
+.formRight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submitButton {
+    height: 4rem;
+    width: 10rem;
+    border-radius: 5px;
+    background-color: rgb(209, 238, 238);
+    font-size: 22px;
+}
+
+.submitButton:hover {
+    background-color: rgb(162, 194, 194);
+}
+
+label {
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#winDisplay {
+    display: grid;
+    place-items: center;
+    justify-self: center;
+    border: 2px red solid;
+    margin-top: 6rem;
 }
