@@ -1,22 +1,10 @@
 const player = (name, symbol) => {
     return { name, symbol };
 }
+
+
 const Player1 = player("", "X");
 const Player2 = player("", "O");
-
-
-
-// const name1 = document.querySelector('#name1');
-// const name2 = document.querySelector('#name2');
-// const submitButton = document.querySelector('.submitButton');
-
-// submitButton.addEventListener('click', (e) => {
-//     e.preventDefault();
-//     Player1.name = name1.value;
-//     Player2.name = name2.value;
-//     endGame.reset();
-
-// })
 
 
 const formInput = (() => {
@@ -33,6 +21,7 @@ const formInput = (() => {
                 endGame.reset();
             } else {
                 gameBoard.display.textContent = "Please Enter Player Names";
+                endGame.disableAll();
             }
             
 
