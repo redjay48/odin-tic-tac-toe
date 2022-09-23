@@ -1,9 +1,51 @@
 const player = (name, symbol) => {
     return { name, symbol };
 }
+const Player1 = player("", "X");
+const Player2 = player("", "O");
 
-const Player1 = player('Raju', "X");
-const Player2 = player("Raj", "O");
+
+
+// const name1 = document.querySelector('#name1');
+// const name2 = document.querySelector('#name2');
+// const submitButton = document.querySelector('.submitButton');
+
+// submitButton.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     Player1.name = name1.value;
+//     Player2.name = name2.value;
+//     endGame.reset();
+
+// })
+
+
+const formInput = (() => {
+
+    const _name1 = document.querySelector('#name1');
+    const _name2 = document.querySelector('#name2');
+    const _submitButton = document.querySelector('.submitButton');
+    const entry = () => {
+        _submitButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (_name1.value !== '' && _name2.value !== '') {
+                Player1.name = _name1.value;
+                Player2.name = _name2.value;
+                endGame.reset();
+            } else {
+                gameBoard.display.textContent = "Please Enter Player Names";
+            }
+            
+
+        })
+    }
+
+
+    return {
+        entry
+    }
+})();
+
+
 
 
 const gameBoard = (() => {
@@ -30,6 +72,7 @@ const displayController = (() => {
 
     let _count = 0;
     const pressCell = () => {
+
         Array.from(gameBoard.cells).forEach(element => {
             element.addEventListener('click', () => {
                 element.disabled = "true"
@@ -60,13 +103,18 @@ const gameLogic = (() => {
 
 
     const win = () => {
-       gameBoard.setArray.forEach(set => {
+
+        gameBoard.setArray.forEach(set => {
             if (set.every(_fillAll)) {
                 if (set.every(_fillOne)) {
                     gameBoard.display.textContent = `${Player1.name} Wins!!!`;
+                    name1.value = '';
+                    name2.value = '';
                     endGame.disableAll();
                 } else if (set.every(_fillTwo)) {
                     gameBoard.display.textContent = `${Player2.name} Wins!!!`;
+                    name1.value = '';
+                    name2.value = '';
                     endGame.disableAll();
                 }
             }
@@ -82,19 +130,27 @@ const gameLogic = (() => {
 const endGame = (() => {
     const disableAll = () => {
         for (let i = 0; i < gameBoard.cells.length; i++) {
-            gameBoard.cells[i].disabled = 'true';
+            gameBoard.cells[i].disabled = true;
+        }
+    }
+
+    const reset = () => {
+        for (let i = 0; i < gameBoard.cells.length; i++) {
+            gameBoard.cells[i].disabled = false;
+            gameBoard.cells[i].textContent = '';
+            gameBoard.display.textContent = '';
         }
     }
 
     return {
-        disableAll
+        disableAll,
+        reset
     }
 })();
 
 
 displayController.pressCell();
-
-
+formInput.entry();
 
 
 
@@ -109,9 +165,4 @@ displayController.pressCell();
 // const cell20 = document.querySelector(`button[data-key="20"]`);
 // const cell21 = document.querySelector(`button[data-key="21"]`);
 // const cell22 = document.querySelector(`button[data-key="22"]`);
-
-
-
-
-
 
