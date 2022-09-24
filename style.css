@@ -1,5 +1,10 @@
+html {
+    border: 0;
+}
+
 body {
     background-color: rgb(243, 229, 212);
+    margin: 0;
 }
 
 
@@ -7,6 +12,10 @@ header {
     text-align: center;
     font-size: 64px;
     color: rgb(145, 119, 170);
+    border: 0;
+    background-color: azure;
+    height: 100px;
+    padding-top: 20px;
 }
 
 section#main {
@@ -30,7 +39,7 @@ section#main {
 #gameBoard {
     display: grid;
     gap: 5px;
-    border: 4px solid black;
+    border: 8px solid black;
     border-radius: 5px;
     background-color: black;
 }
