@@ -30,6 +30,9 @@ section#main {
 #gameBoard {
     display: grid;
     gap: 5px;
+    border: 4px solid black;
+    border-radius: 5px;
+    background-color: black;
 }
 
 .divRow1, .divRow2, .divRow3 {
